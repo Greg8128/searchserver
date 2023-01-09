@@ -1,5 +1,5 @@
 # Motivation
-similar to "bangs" on duckduckgo and brave search but customizable and a little faster.
+Similar to "bangs" on duckduckgo and brave search but customizable and a little faster.
 
 # Setup
 Clone the project. You can do this with `git clone $project_git_url`.
