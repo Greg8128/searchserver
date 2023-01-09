@@ -1,3 +1,6 @@
+# Motivation
+similar to "bangs" on duckduckgo and brave search but customizable and a little faster.
+
 # Setup
 Clone the project. You can do this with `git clone $project_git_url`.
 Make the config file.
@@ -15,12 +18,13 @@ patterns:
     - - h (.*)
       - https://hoogle.haskell.org/?hoogle=\1
 
-# Default search engine
+# default search engine
     - - (.*)
-      - https://duckduckgo.com/?q=\1         # duckduckgo
-      # - https://www.google.com/search?q=\1 # google
-      # - https://www.bing.com/search?q=\1   # bing
-      # - https://yandex.com/search/?text=\1 # yandex
+      - https://search.brave.com/search?q=foo # brave search
+      # - https://www.google.com/search?q=\1  # google
+      # - https://www.bing.com/search?q=\1    # bing
+      # - https://yandex.com/search/?text=\1  # yandex
+      # - https://duckduckgo.com/?q=\1        # duckduckgo
 ```
 With this configuration, you can put "h" before a search query to search it on hoogle. Otherwise, the query will be searched on duckduckgo.
 
