@@ -12,7 +12,7 @@ It is treated as a YAML file. An example config file is:
 port: 3000
 patterns:
 # hoogle      
-    - - h!(.*)
+    - - h (.*)
       - https://hoogle.haskell.org/?hoogle=\1
 
 # Default search engine
@@ -22,6 +22,7 @@ patterns:
       # - https://www.bing.com/search?q=\1   # bing
       # - https://yandex.com/search/?text=\1 # yandex
 ```
+With this configuration, you can put "h" before a search query to search it on hoogle. Otherwise, the query will be searched on duckduckgo.
 
 `port` is the port that searchserver runs from.
 `patterns` is a list of search-replace pairs. Each one is a list with the first entry being a perl-style regular expression, and the second one being a URL template string in which captured entries can be substituted, with "\1" being the first substituted term, "\2" the second, and so forth. The first regex in the list that matches the query is used to substitue the query into the corresponding URL template string.
@@ -30,4 +31,3 @@ The query is stripped of leading and trailing whitespace and the regular express
 # Browser configuration
 In Microsoft Edge, go to `Privacy, Search and Services > Address Bar and Search > Manage Search Engines`, and add a new search engine with URL string "http://localhost:3000/?q=%s".
 In Firefox, install the "Add custom search engine" extension, then add a search engine with URL string "http://localhost:3000/?q=%s"
-
