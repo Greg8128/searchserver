@@ -1,8 +1,8 @@
 # Setup
 Clone the project. You can do this with `git clone $project_git_url`.
 Make the config file.
-Then, build and run it with cabal.
-In your favorite web browser, set it up as a search engine.
+In your favorite web browser, set up searchserver as a search engine.
+Then, build and run searchserver.
 
 # Config file
 Make a file called `.searchserver` in your home directory. You can do this by running `touch .searchserver` from your home directory.
