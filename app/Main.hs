@@ -7,7 +7,7 @@ import Data.Aeson
 import qualified Data.ByteString.Lazy as BS
 import Data.Maybe
 import Data.Monoid
-import Data.Text.Lazy
+import Data.Text.Lazy as T
 import Data.YAML.Aeson as YA
 import GHC.Generics
 import System.Directory
@@ -39,17 +39,17 @@ main = do
         qps <- param "q"
         let q = unpack $ strip $ pack qps
         let url = firstSub q patterns
-        redirect $ strip $ pack url
+        redirect $ strip $ T.replace "+" "%2B" $ pack url
 
-makeRedirect url =
-  mconcat ["<meta http-equiv=\"refresh\" content=\"0; url=", pack url, ">"]
-
+firstSub :: String -> [([Char], String)] -> String
 firstSub str pats =
   fromMaybe "https://www.haskell.org/" $
   getFirst $ mconcat $ fmap (First . trySub str) pats
 
+trySub :: String -> ([Char], String) -> Maybe String
 trySub str (pat, rep)
   | Just _ <- matchRegexPR (complete pat) str = Just $ subRegexPR pat rep str
   | otherwise = Nothing
 
+complete :: [Char] -> [Char]
 complete str = "^" ++ str ++ "$"
